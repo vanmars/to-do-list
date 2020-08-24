@@ -1,12 +1,3 @@
-//  Tasks
-// 1. Create a constructor for To-Do Object X
-// 2. Create a constructor for task items (description) X
-// 3. Be able to add tasks to to-do object (to-do prototypes) X
-// 5. Add a task item method for saying whether the task is complete X
-// 6. Create the user interface with a form for adding tasks, button for showing a task is compelted.
-// 7. Display area for showing the results
-
-
 //Business Logic
   function ToDo() {
     this.tasks = [];
@@ -47,13 +38,12 @@
 //  Create ToDo Object
 let todo = new ToDo();
 
-
-
 //User Interface Logic
 $(document).ready(function (){
   $("form").submit(function(event){
     event.preventDefault();
-    // Function for Click Events
+
+    // Function for Add Task Click Events
     function uiAddTask(){
       const taskInput = $("#addTask").val();
       let task = new Task(taskInput);
@@ -71,7 +61,7 @@ $(document).ready(function (){
       $(this).addClass("markIncomplete");
       $(this).removeClass("markComplete");
       console.log($(this).attr("class"));
-    })
+    });
     
     // Handle markIncomplete Event
     $(".markIncomplete").click(function(){
@@ -82,10 +72,9 @@ $(document).ready(function (){
       $(this).addClass("markComplete");
       $(this).removeClass("markIncomplete");
       console.log($(this).attr("class"));
-    })
+    });
    
-
-    //Remove Task User Interface 
+    // Handle Remove Task Event
     $(".remove").click(function() {
       $(this).parent("li").remove();
       let idfromelement = $(this).parent("li").attr("id");
@@ -93,8 +82,6 @@ $(document).ready(function (){
       // let id = $(this).parent(task.id);
       // console.log(id);
       // todo.deleteTask($(this).parent(id));
-      
     });
   });
- 
 });

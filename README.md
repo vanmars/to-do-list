@@ -13,16 +13,16 @@ _This is a simple web page that allows users to track to do tasks._
 ## Specifications
 
 1. Behavior: When a user enters a task in the form input field, a new to-do item is added to the to-do object and displayed on the screen.
-Input:
-Output:
+Input: "fold laundry"
+Output: A list item under "Tasks" will be added with "fold laundry" followed by two buttons: "Mark Complete" and "Remove Task"
 
 2. Behavior: When a user clicks the delete button, the task item is deleted from the to-do object and is removed from the screen.
-Input:
-Output:
+Input: "Remove Task" button beside "fold laundry" clicked
+Output: "fold laundry" and corresponding buttons are removed from the screen
 
 3. Behavior: When a user clicks the completed button, the task item will turn green and the button will change to Incomplete.
-Input:
-Output:
+Input: "Mark Complete" button beside "fold laundry" clicked
+Output: "fold laundry text turns green and "Mark Complete" button changes to "Completed!"
 
 
 ## Setup/Installation Requirements
