@@ -18,7 +18,7 @@
     this.tasks.push(task)
   };
 
-  ToDo.prototype.deleteTask = function(task) {
+  ToDo.prototype.deleteTask = function(id) {
     for (let i=0; i<this.tasks;i++) {
       if (this.tasks[i]) {
         if (this.tasks[i].id == id){
@@ -49,19 +49,52 @@ let todo = new ToDo();
 
 
 
-
-
 //User Interface Logic
 $(document).ready(function (){
   $("form").submit(function(event){
     event.preventDefault();
     // Function for Click Events
     function uiAddTask(){
-      const itemInput = $("#addTask").val();
-      let item = new Task(itemInput)
-      todo.addTask(item)
-      $("#taskList").html("<li>"+itemInput+"</li><button class='btn-sm btn-primary'>'Completed!'</button><button class='btn-sm btn-primary'>Remove Task</button>");
+      const taskInput = $("#addTask").val();
+      let task = new Task(taskInput);
+      todo.addTask(task);
+      $("#taskList").append("<li id='"+task.id+"' class='listitem black'>"+taskInput+"<button id='"+task.id+"-complete' class='btn-sm btn-primary markComplete'>Mark Complete</button><button id='"+task.id+"-remove' class='btn-sm btn-primary remove'>Remove Task</button></li>");
     }; 
     uiAddTask();
-  })
+
+    // Handle markComplete Event
+    $(".markComplete").click(function(){
+      $(this).parent("li").removeClass("black");
+      $(this).parent("li").addClass("green");
+      // Change the button to Mark Incomplete.
+      $(this).text("Completed!");
+      $(this).addClass("markIncomplete");
+      $(this).removeClass("markComplete");
+      console.log($(this).attr("class"));
+    })
+    
+    // Handle markIncomplete Event
+    $(".markIncomplete").click(function(){
+      $(this).parent("li").removeClass("green");
+      $(this).parent("li").addClass("black");
+      // Change the button to Mark Incomplete.
+      $(this).text("Mark Complete");
+      $(this).addClass("markComplete");
+      $(this).removeClass("markIncomplete");
+      console.log($(this).attr("class"));
+    })
+   
+
+    //Remove Task User Interface 
+    $(".remove").click(function() {
+      $(this).parent("li").remove();
+      let idfromelement = $(this).parent("li").attr("id");
+      todo.deleteTask(idfromelement);
+      // let id = $(this).parent(task.id);
+      // console.log(id);
+      // todo.deleteTask($(this).parent(id));
+      
+    });
+  });
+ 
 });
