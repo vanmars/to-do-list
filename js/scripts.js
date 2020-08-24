@@ -44,8 +44,24 @@
     this.isComplete = true;
   };
 
-  
+//  Create ToDo Object
+let todo = new ToDo();
+
+
+
 
 
 //User Interface Logic
-$(document)
+$(document).ready(function (){
+  $("form").submit(function(event){
+    event.preventDefault();
+    // Function for Click Events
+    function uiAddTask(){
+      const itemInput = $("#addTask").val();
+      let item = new Task(itemInput)
+      todo.addTask(item)
+      $("#taskList").html("<li>"+itemInput+"</li><button class='btn-sm btn-primary'>'Completed!'</button><button class='btn-sm btn-primary'>Remove Task</button>");
+    }; 
+    uiAddTask();
+  })
+});
