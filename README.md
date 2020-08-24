@@ -28,7 +28,7 @@ Output: "fold laundry text turns green and "Mark Complete" button changes to "Co
 ## Setup/Installation Requirements
 
 To View Project:
-* Open a web browser of your choice and navigate to the following page:
+* Open a web browser of your choice and navigate to the following page: https://vanmars.github.io/to-do-list/.
 
 To Extend This Project:
 * Clone this project using the 'git clone' command in terminal.
