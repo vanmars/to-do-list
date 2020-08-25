@@ -54,12 +54,20 @@
 //User Interface Logic
   //  Create ToDo Object
 let todo = new ToDo();
+
   // Functions
+function displayTasks(newTask) {
+  let tasksList = $("#tasksList");
+  let htmlForTaskInfo = "<li class='black' id=" + newTask.id + ">" + newTask.taskName + "<br><br><button id='"+newTask.id+"-complete' class='btn-sm btn-primary markComplete'>Mark Complete</button><button id='"+newTask.id+"-remove' class='btn-sm btn-primary remove'>Remove Task</button></li><br>";
+  tasksList.append(htmlForTaskInfo);
+};
+
 function addTaskEventHandler(){
-  const taskInput = $("#addTask").val();
-  let task = new Task(taskInput);
-  todo.addTask(task);
-  $("#taskList").append("<li id='"+task.id+"' class='listitem black'>"+taskInput+"<button id='"+task.id+"-complete' class='btn-sm btn-primary markComplete'>Mark Complete</button><button id='"+task.id+"-remove' class='btn-sm btn-primary remove'>Remove Task</button></li>");
+  const inputtedTask = $("#addTask").val();
+  $("#addTask").val("");
+  let newTask = new Task(inputtedTask);
+  todo.addTask(newTask);
+  displayTasks(newTask);
 }; 
 
 $(document).ready(function (){
@@ -67,36 +75,33 @@ $(document).ready(function (){
     event.preventDefault();
     addTaskEventHandler();
 
-    // Handle markComplete Event
-    $(".markComplete").click(function(){
-      $(this).parent("li").removeClass("black");
-      $(this).parent("li").addClass("green");
-      // Change the button to Mark Incomplete.
-      $(this).text("Completed!");
-      $(this).addClass("markIncomplete");
-      $(this).removeClass("markComplete");
-      console.log($(this).attr("class"));
-    });
+    // // Handle markComplete Event
+    // $(".markComplete").click(function(){
+    //   $(this).parent("li").removeClass("black");
+    //   $(this).parent("li").addClass("green");
+    //   // Change the button to Mark Incomplete.
+    //   $(this).text("Completed!");
+    //   $(this).addClass("markIncomplete");
+    //   $(this).removeClass("markComplete");
+    //   console.log($(this).attr("class"));
+    // });
     
-    // Handle markIncomplete Event
-    $(".markIncomplete").click(function(){
-      $(this).parent("li").removeClass("green");
-      $(this).parent("li").addClass("black");
-      // Change the button to Mark Incomplete.
-      $(this).text("Mark Complete");
-      $(this).addClass("markComplete");
-      $(this).removeClass("markIncomplete");
-      console.log($(this).attr("class"));
-    });
+    // // Handle markIncomplete Event
+    // $(".markIncomplete").click(function(){
+    //   $(this).parent("li").removeClass("green");
+    //   $(this).parent("li").addClass("black");
+    //   // Change the button to Mark Incomplete.
+    //   $(this).text("Mark Complete");
+    //   $(this).addClass("markComplete");
+    //   $(this).removeClass("markIncomplete");
+    //   console.log($(this).attr("class"));
+    // });
    
-    // Handle Remove Task Event
-    $(".remove").click(function() {
-      $(this).parent("li").remove();
-      let idfromelement = $(this).parent("li").attr("id");
-      todo.deleteTask(idfromelement);
-      // let id = $(this).parent(task.id);
-      // console.log(id);
-      // todo.deleteTask($(this).parent(id));
-    });
+    // // Handle Remove Task Event
+    // $(".remove").click(function() {
+    //   $(this).parent("li").remove();
+    //   let idfromelement = $(this).parent("li").attr("id");
+    //   todo.deleteTask(idfromelement);
+    // });
   });
 });
