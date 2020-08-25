@@ -54,20 +54,18 @@
 //User Interface Logic
   //  Create ToDo Object
 let todo = new ToDo();
-
+  // Functions
+function addTaskEventHandler(){
+  const taskInput = $("#addTask").val();
+  let task = new Task(taskInput);
+  todo.addTask(task);
+  $("#taskList").append("<li id='"+task.id+"' class='listitem black'>"+taskInput+"<button id='"+task.id+"-complete' class='btn-sm btn-primary markComplete'>Mark Complete</button><button id='"+task.id+"-remove' class='btn-sm btn-primary remove'>Remove Task</button></li>");
+}; 
 
 $(document).ready(function (){
   $("form").submit(function(event){
     event.preventDefault();
-
-    // Function for Add Task Click Events
-    function uiAddTask(){
-      const taskInput = $("#addTask").val();
-      let task = new Task(taskInput);
-      todo.addTask(task);
-      $("#taskList").append("<li id='"+task.id+"' class='listitem black'>"+taskInput+"<button id='"+task.id+"-complete' class='btn-sm btn-primary markComplete'>Mark Complete</button><button id='"+task.id+"-remove' class='btn-sm btn-primary remove'>Remove Task</button></li>");
-    }; 
-    uiAddTask();
+    addTaskEventHandler();
 
     // Handle markComplete Event
     $(".markComplete").click(function(){

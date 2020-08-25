@@ -10,27 +10,31 @@
   <title>To Do List</title>
 </head>
 <body>
-<div class="container">
-  <div class="jumbotron">
-    <h4 class="display-4">To-Do Items</h4>
-  </div>
-  <div class="display">
-    <h6 class="lead">Tasks</h6>
-    <ul id="taskList">
-      <!-- <li id="item1">Item</li>
-      <button class="btn-sm btn-primary">Completed!</button>
-      <button class="btn-sm btn-primary">Remove Task</button> -->
-    </ul>
-  </div>
-  <form id="tasks">
-    <div class="form-group">
-      <label for="addTask">Please enter a new task:</label>
-      <input id="addTask" type="text" class="form-control">
-    </div> 
-    <button type="submit" class="btn btn-primary">Add Task</button>
-  </form>
+  <div class="container">
+    <div class="jumbotron">
+      <h4 class="display-4 text-center">Vanessa's To-Do List</h4>
+    </div>
 
-</div>
-  
+    <div class="row">
+      <div class="col-md-6">
+        <form id="tasks" class="text-center">
+          <div class="form-group">
+            <label for="addTask">Enter a new task here:</label>
+            <input id="addTask" type="text" class="form-control mx-auto">
+          </div> 
+          <button type="submit" class="btn btn-primary">Add Task</button>
+        </form>
+      </div>
+
+      <div class="col-md-6 card p-2">
+        <div id="display" class="text-center">
+          <h6 class="lead"><em>TASKS</em></h6>
+          <ul id="tasksList">
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div> 
 </body>
 </html>
