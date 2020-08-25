@@ -1,44 +1,61 @@
 //Business Logic
-  function ToDo() {
+  // ToDo Constructor
+  function ToDo () {
     this.tasks = [];
-    this.currentId=0;
+    this.currentId = 0;
   };
-  
+
+  // ToDo Prototypes
+  ToDo.prototype.assignId = function() {
+    this.currentId += 1;
+    return this.currentId;
+  };
+
   ToDo.prototype.addTask = function(task) {
-    task.id=this.assignId();
+    task.id = this.assignId();
     this.tasks.push(task)
   };
 
   ToDo.prototype.deleteTask = function(id) {
-    for (let i=0; i<this.tasks;i++) {
+    for (let i = 0; i< this.tasks; i++) {
       if (this.tasks[i]) {
-        if (this.tasks[i].id == id){
+        if (this.tasks[i].id == id) {
           delete this.tasks[i];
           return true;
-        }
-      }
+        };
+      };
     };
     return false;
   };
 
-  ToDo.prototype.assignId = function() {
-    this.currentId +=1;
-    return this.currentId;
+  ToDo.prototype.findContact = function(id) {
+    for (let i = 0; i < this.tasks; i++) {
+      if(this.tasks[i]) {
+        if(this.tasks[i].id == id) {
+          return this.tasks[i];
+        };
+      };
+    };
+    return false;
   };
 
-  function Task(taskName) {
+  // Task Constructor
+  function Task (taskName) {
     this.taskName = taskName;
     this.isComplete = false;
   };
 
+  // Task Prototypes
   Task.prototype.isComplete = function() {
     this.isComplete = true;
   };
 
-//  Create ToDo Object
-let todo = new ToDo();
 
 //User Interface Logic
+  //  Create ToDo Object
+let todo = new ToDo();
+
+
 $(document).ready(function (){
   $("form").submit(function(event){
     event.preventDefault();
